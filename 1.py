@@ -7,14 +7,10 @@ msp = doc.modelspace()
 
 psp =doc.paperspace()
 
-#input: 1.13 IL, manhole width: 1.2
 
-il = 1.13
 mw = 1.2
-gl = 4.24
 
-# sp = (-.6,2.25,0)
-# ep = (+.6,2.25,0)
+
 
 
 def manhole(il,mw=1.2,gl=0,length=0,name=""):
@@ -148,10 +144,32 @@ for i in range(len(name)):
     manhole(il=il[i],mw=1.2,gl=gl[i],length=cumulative_length,name=name[i])
 
 
+#extending annotation table line
+at1 = (-6.6457,-33.6108,0)
+at2 = (cumulative_length+5,-33.6108,0)
+at3 = (-6.6457,-27.8324,0)
+at4 = (cumulative_length+5,-27.8324,0)
+at5 = (-6.6457,-19.8780,0)
+at6 = (cumulative_length+5,-19.8780,0)
+at7 = (-6.6457,-14.4882,0)
+at8 = (cumulative_length+5,-14.4882,0)
+at9 = (-6.6457,-10.8458,0)
+at10 = (cumulative_length+5,-10.8458,0)
+dxfattribs_at = {'layer': 'SM_PP_GRIDTEXT'}
+msp.add_line(at1,at2, dxfattribs_at)
+msp.add_line(at3,at4, dxfattribs_at)
+msp.add_line(at5,at6, dxfattribs_at)
+msp.add_line(at7,at8, dxfattribs_at)
+msp.add_line(at9,at10, dxfattribs_at)
+#ending line
+at11 = (cumulative_length+5,6,0)
+msp.add_line(at2,at11,dxfattribs_at)
+
 with open('3.csv', newline='') as csvfile:
     datareader = csv.reader(csvfile, delimiter=',')
     data = list(datareader)  # Read all the rows of the CSV file into a list
 
+#making a list out every column such as name , il, gl, slope, dia 
 name1 = [row[0] for row in data]
 start_gl = [float(row[3]) for row in data]
 stop_gl = [float(row[4]) for row in data]
@@ -166,14 +184,9 @@ cumulative_length = 0  # Initialize a running total of length
 for i in range(len(name1)):
     cumulative_length += length[i]
     normal_swr(start_il[i], stop_il[i], start_gl[i], stop_gl[i], slope[i], dia[i],length[i], cumulative_length)
-print(cumulative_length)
 
 
 
 
 
-# manhole(il=1.13,mw=1.2,gl=4.24,length=0,name="A11-02")
-# manhole(il=2.28,mw=1.2,gl=3.68,length=45.8,name="A11-02-01")
-
-
-doc.saveas('d23.dxf')
+doc.saveas('d231.dxf')
