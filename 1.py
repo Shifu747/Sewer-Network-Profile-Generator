@@ -1,4 +1,5 @@
 import ezdxf
+import csv
 
 doc = ezdxf.readfile('Drawing1.dxf')
 
@@ -67,7 +68,6 @@ def manhole(il,mw=1.2,gl=0,length=0,name=""):
     msp.add_text(text=str(length), dxfattribs=dxfattribs4)
 
 
-    #query
        
 
 
@@ -97,45 +97,45 @@ def normal_swr(start_il,stop_il,start_gl,stop_gl,slope,dia,length,cumulative_len
         dxfattribs_gl = {'color': 3, 'layer': 'GROUND_ELEVATION'}
         msp.add_line(gdn1,gdn2,dxfattribs=dxfattribs_gl)
         
-    else: 
-        sdn1 = ((cumulative_length-mw/2),stop_il*2,0)
-        sdn2 = ((cumulative_length-length+mw/2),start_il*2,0)
+    else:
+        try:     
+            sdn1 = ((cumulative_length-mw/2),stop_il*2,0)
+            sdn2 = ((cumulative_length-length+mw/2),start_il*2,0)
 
 
-        sup1 = ((cumulative_length-mw/2),((stop_il*2)+((dia*2)/1000)),0)
-        sup2 = ((cumulative_length-length+mw/2),((start_il*2)+((dia*2)/1000)),0)
+            sup1 = ((cumulative_length-mw/2),((stop_il*2)+((dia*2)/1000)),0)
+            sup2 = ((cumulative_length-length+mw/2),((start_il*2)+((dia*2)/1000)),0)
 
-        msp.add_line(sdn1,sdn2)
-        msp.add_line(sup1,sup2)
+            msp.add_line(sdn1,sdn2)
+            msp.add_line(sup1,sup2)
 
-        #DLS
-        insert5 = (cumulative_length-(length/2), -21.13)
-        dxfattribs5 = {'style': 'ALL', 'color': 7, 'layer': 'text', 'insert':insert5, 'char_height':1.26, 'attachment_point':2 }
-        text5 = "Ø" + str(dia) + "mm\n" + "L=" + str(length) + " m\n" + "1:300" 
-        dls =msp.add_mtext(text=text5, dxfattribs=dxfattribs5)
-        dls.set_location(insert5)
+            #DLS
+            insert5 = (cumulative_length-(length/2), -21.13)
+            dxfattribs5 = {'style': 'ALL', 'color': 7, 'layer': 'text', 'insert':insert5, 'char_height':1.26, 'attachment_point':2 }
+            text5 = "Ø" + str(dia) + "mm\n" + "L=" + str(length) + " m\n" + "1:300" 
+            dls =msp.add_mtext(text=text5, dxfattribs=dxfattribs5)
+            dls.set_location(insert5)
 
         #GL
-        gdn1 = ((cumulative_length-mw/2),stop_gl*2,0)
-        gdn2 = ((cumulative_length-length+mw/2),start_gl*2,0)
-        dxfattribs_gl = {'color': 3, 'layer': 'GROUND_ELEVATION'}
-        gl = msp.add_line(gdn1,gdn2,dxfattribs=dxfattribs_gl)
-
+            gdn1 = ((cumulative_length-mw/2),stop_gl*2,0)
+            gdn2 = ((cumulative_length-length+mw/2),start_gl*2,0)
+            dxfattribs_gl = {'color': 3, 'layer': 'GROUND_ELEVATION'}
+            gl = msp.add_line(gdn1,gdn2,dxfattribs=dxfattribs_gl)
+        except TypeError:
+            pass
     
 
+#reading data
 
-
-
-import csv
-
-with open('2.csv', newline='') as csvfile:
+with open('3.csv', newline='') as csvfile:
     datareader = csv.reader(csvfile, delimiter=',')
+    next(datareader)  # skip the first row
     data = list(datareader)
 
-name = [row[0] for row in data]
-gl = [float(row[1]) for row in data]
-il = [float(row[2]) for row in data]
-length = [float(row[3]) for row in data]
+name = [row[1] for row in data]
+gl = [float(row[10]) for row in data]
+il = [float(row[11]) for row in data]
+length = [float(row[12]) for row in data]
 
 
 cumulative_length = 0
@@ -167,17 +167,27 @@ msp.add_line(at2,at11,dxfattribs_at)
 
 with open('3.csv', newline='') as csvfile:
     datareader = csv.reader(csvfile, delimiter=',')
+    next(datareader) 
     data = list(datareader)  # Read all the rows of the CSV file into a list
+    print(data)
 
 #making a list out every column such as name , il, gl, slope, dia 
 name1 = [row[0] for row in data]
-start_gl = [float(row[3]) for row in data]
-stop_gl = [float(row[4]) for row in data]
-length = [float(row[5]) for row in data]
-dia =  [float(row[6]) for row in data]
-slope = [float(row[7]) for row in data]
-start_il = [float(row[8]) for row in data]
-stop_il = [float(row[9]) for row in data]
+# float(row[1]) if row[1].replace('.', '', 1).isdigit() else None for row in data]
+start_gl = [float(row[3]) if row[3].replace('.', '', 1).isdigit() else None for row in data]
+# [float(row[3]) for row in data]
+stop_gl = [float(row[4]) if row[4].replace('.', '', 1).isdigit() else None for row in data]
+# [float(row[4]) for row in data]
+length = [float(row[5]) if row[5].replace('.', '', 1).isdigit() else None for row in data]
+# [float(row[5]) for row in data]
+dia =  [float(row[6]) if row[6].replace('.', '', 1).isdigit() else None for row in data]
+# [float(row[6]) for row in data]
+slope = [float(row[7]) if row[7].replace('.', '', 1).isdigit() else None for row in data]
+# [float(row[7]) for row in data]
+start_il = [float(row[8]) if row[8].replace('.', '', 1).isdigit() else None for row in data]
+# [float(row[8]) for row in data]
+stop_il = [float(row[9]) if row[9].replace('.', '', 1).isdigit() else None for row in data]
+# [float(row[9]) for row in data]
 
 
 cumulative_length = 0  # Initialize a running total of length
