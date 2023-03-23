@@ -1,0 +1,5 @@
+SWR,Manhole From,Manhole To,Start GL,Stop GL,Length Swr,dia,Slope,Start IL ,Stop IL,Manhole From GL,Manhole From IL,Manhole Distance
+SWR-1472,A16,A15,4.3,4.1,218.9,1745,2008,-5.79,-5.9,4.3,-5.79,0
+SWR-1477,A15,A14,4.1,4.06,177.5,1745,1994,-5.9,-5.99,4.1,-5.9,218.9
+SWR-1478,A14,A13,4.06,3.99,205.4,1745,1995,-5.99,-6.09,4.06,-5.99,177.5
+,A13,,,,0,,,,,3.99,-6.09,205.4
