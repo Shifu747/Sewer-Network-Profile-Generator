@@ -1,0 +1,3 @@
+SWR,Manhole From,Manhole To,Start GL,Stop GL,Length Swr,dia,Slope,Start IL ,Stop IL,Manhole From GL,Manhole From IL,Manhole Distance
+SWR-741,A13-16-03,A13-16-02,8.28,7.96,78.2,600,632,4.19,4.06,8.28,4.19,0
+,A13-16-02,,,,0,,,,,7.96,3.52,78.2

@@ -42,7 +42,7 @@ def manhole(il,mw=1.2,gl=0,length=0,name=""):
     depth =gl-il
     depth = (round(depth,2))
     text = name + "\nGL:" +str(gl) + "m/" + "IL:" + str(il) +"m" + "\nDepth:" + str(depth) + " m"
-    insert = (length, gl+12.61)
+    insert = (length, gl+18.50)
     height = 1.26
     dxfattribs = {'style': 'ALL', 'color': 7, 'layer': 'text', 'char_height':1.26}
     mtext=msp.add_mtext(text, dxfattribs=dxfattribs)
@@ -90,6 +90,13 @@ def normal_swr(start_il,stop_il,start_gl,stop_gl,slope,dia,length,cumulative_len
         dls =msp.add_mtext(text=text5, dxfattribs=dxfattribs5)
         dls.set_location(insert5)
 
+        #Open Cut/Pipe Jacking
+        insertOJ = (length/2, -3.285)
+        dxfattribsOJ = {'style': 'ALL', 'color': 7, 'layer': 'text', 'insert':insertOJ, 'char_height':1.26, 'attachment_point':2 }
+        txtOpen = "Open Cut"
+        txtOJ = msp.add_mtext(text=txtOpen, dxfattribs=dxfattribsOJ)
+        txtOJ.set_location(insertOJ)
+
 
         #GL
         gdn1 = ((length-mw/2),stop_gl*2,0)
@@ -116,6 +123,13 @@ def normal_swr(start_il,stop_il,start_gl,stop_gl,slope,dia,length,cumulative_len
             dls =msp.add_mtext(text=text5, dxfattribs=dxfattribs5)
             dls.set_location(insert5)
 
+            #Open Cut/Pipe Jacking
+            insertOJ = (cumulative_length-(length/2), -3.285)
+            dxfattribsOJ = {'style': 'ALL', 'color': 7, 'layer': 'text', 'insert':insertOJ, 'char_height':1.26, 'attachment_point':2 }
+            txtOpen = "Pipe Jacking "
+            txtOJ = msp.add_mtext(text=txtOpen, dxfattribs=dxfattribsOJ)
+            txtOJ.set_location(insertOJ)
+
         #GL
             gdn1 = ((cumulative_length-mw/2),stop_gl*2,0)
             gdn2 = ((cumulative_length-length+mw/2),start_gl*2,0)
@@ -127,7 +141,7 @@ def normal_swr(start_il,stop_il,start_gl,stop_gl,slope,dia,length,cumulative_len
 
 #reading data
 
-with open('3.csv', newline='') as csvfile:
+with open('R1200.csv', newline='') as csvfile:
     datareader = csv.reader(csvfile, delimiter=',')
     next(datareader)  # skip the first row
     data = list(datareader)
@@ -165,7 +179,7 @@ msp.add_line(at9,at10, dxfattribs_at)
 at11 = (cumulative_length+5,6,0)
 msp.add_line(at2,at11,dxfattribs_at)
 
-with open('3.csv', newline='') as csvfile:
+with open('R1200.csv', newline='') as csvfile:
     datareader = csv.reader(csvfile, delimiter=',')
     next(datareader) 
     data = list(datareader)  # Read all the rows of the CSV file into a list
