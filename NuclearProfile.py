@@ -44,9 +44,25 @@ def parse_numeric_list(data, idx):
     ]
 
 
+def templateIDcheck(gl,il):
+    '''selects a scale based on il and gl.
+        template: scale -5 to +5
+         template0510: scale 0 to +10
+          template10505: scale -10 to +5 '''
+    if gl>0 and il < -5 :
+        templateID,templateName = -10, 'template10505'
+    elif gl> 5 and il > 0 :
+        templateID,templateName = 10, 'template0510'
+    else:
+        templateID,templateName = 0, 'template'
+    return templateID,templateName
 
 
-def manhole_geometry(length,mw,il,gl):
+
+def manhole_geometry(length,mw,il,gl,templateID=0):
+    '''Draws a manhole using given il,gl and mw
+        length denotes the center to center distance of manholes
+        '''
 
     dxfattribs = {'layer': 'Profile Manhole'}    
     dn1 = ((length-mw/2),il*2,0)
@@ -65,40 +81,45 @@ def manhole_geometry(length,mw,il,gl):
     msp.add_line(dn2,up2,dxfattribs)
 
     md1 = (length,gl*2,0)
-    md2 = (length,-33.61,0)
+    md2 = (length,-33.61+templateID,0)
 
     #MH midline
     dxfattribs = {'linetype': 'CENTER', 'color': 8, 'layer': 'lines'}
     msp.add_line(md1,md2, dxfattribs)
 
-def manhole_text(length,gl,il,chainage_fixed,name,stop_il):
-        #MH detail Text
+def manhole_text(length,gl,il,chainage_fixed,name,stop_il,templateID):
+    '''Adds Manhole details and annotation table details
+        length: center to center distance of manhole
+        stop_il: conduit having a different il than manhole 
+        chainage_fixed: ensure chainage from csv file'''
+    
+    #MH detail Text
     depth =gl-il
     depth = (round(depth,2))
     text = name + "\nGL:" +str(gl) + "m/" + "IL:" + str(il) +"m" + "\nDepth:" + str(depth) + " m"
     insert = (length, gl+18.50)
     height = 1.26
-    dxfattribs = {'style': 'ALL', 'color': 7, 'layer': 'ANNOTATION', 'char_height':1.26}
+    dxfattribs = {'style': 'ALL', 'color': 7, 'layer': 'ANNOTATION', 'char_height':height}
     mtext=msp.add_mtext(text, dxfattribs=dxfattribs)
     mtext.set_location(insert)
 
     #Annotation table
     #GL
-    insert2 = (length-0.64, -14.13)
+    insert2 = (length-0.64, -14.13+templateID)
     dxfattribs2 = {'style': 'ALL', 'color': 7, 'layer': 'PDF_text', 'insert':insert2, 'height':1.26,'rotation':90}
     an_gl = msp.add_text(text=str(gl), dxfattribs=dxfattribs2)
 
     #IL
     if stop_il ==  il:
-        insert3 = (length-0.64, -19.01)
+        insert3 = (length-0.64, -19.01+templateID)
         dxfattribs3 = {'style': 'ALL', 'color': 7, 'layer': 'PDF_text', 'insert':insert3, 'height':1.26,'rotation':90}
         msp.add_text(text=str(il), dxfattribs=dxfattribs3)
     else:
-        insert3 = (length+1.60, -19.01)
+        insert3 = (length+1.60, -19.01+templateID)
         dxfattribs3 = {'style': 'ALL', 'color': 7, 'layer': 'PDF_text', 'insert':insert3, 'height':1.26,'rotation':90}
         msp.add_text(text=str(il), dxfattribs=dxfattribs3)
 
-        insert3 = (length-0.64, -19.01)
+        insert3 = (length-0.64, -19.01+templateID)
         dxfattribs3 = {'style': 'ALL', 'color': 7, 'layer': 'PDF_text', 'insert':insert3, 'height':1.26,'rotation':90}
         msp.add_text(text=str(stop_il), dxfattribs=dxfattribs3)
 
@@ -106,18 +127,19 @@ def manhole_text(length,gl,il,chainage_fixed,name,stop_il):
     #DLS
 
     #CH
-    insert3 = (length-0.64, -32.53)
+    insert3 = (length-0.64, -32.53+templateID)
     dxfattribs4 = {'style': 'ALL', 'color': 7, 'layer': 'PDF_text', 'insert':insert3, 'height':1.26,'rotation':90}
     msp.add_text(text=str(chainage_fixed), dxfattribs=dxfattribs4)
 
 
 
-def manhole(chainage_fixed,stop_il,il,mw=1.2,gl=0,length=0,name=""):
+def manhole(chainage_fixed,stop_il,il,mw=1.2,gl=0,length=0,name="",templateID=0):
+    '''draws manhole and adds manhole details
+        consists of two function'''
 
+    manhole_geometry(length,mw,il,gl,templateID)
 
-    manhole_geometry(length,mw,il,gl)
-
-    manhole_text(length,gl,il,chainage_fixed,name,stop_il)
+    manhole_text(length,gl,il,chainage_fixed,name,stop_il,templateID)
 
 
 
@@ -125,7 +147,8 @@ def manhole(chainage_fixed,stop_il,il,mw=1.2,gl=0,length=0,name=""):
        
 
 
-def normal_swr(start_il,stop_il,start_gl,stop_gl,slope,dia,length,cumulative_length):
+def normal_swr(start_il,stop_il,start_gl,stop_gl,slope,dia,length,cumulative_length,templateID=0):
+    txtOpen = "Pipe Jacking"
     if length == cumulative_length:
         sdn1 = ((length-mw/2),stop_il*2,0)
         sdn2 = ((+mw/2),start_il*2,0)
@@ -138,16 +161,16 @@ def normal_swr(start_il,stop_il,start_gl,stop_gl,slope,dia,length,cumulative_len
         msp.add_line(sup1,sup2)
 
         #DLS
-        insert5 = (length/2, -21.13)
+        insert5 = (length/2, -21.13+templateID)
         dxfattribs5 = {'style': 'ALL', 'color': 7, 'layer': 'ANNOTATION', 'insert':insert5, 'char_height':1.26, 'attachment_point':2 }
         text5 = "Ø" + str(dia) + "mm\n" + "L=" + str(length) + " m\n" + "1:300" 
         dls =msp.add_mtext(text=text5, dxfattribs=dxfattribs5)
         dls.set_location(insert5)
 
         #Open Cut/Pipe Jacking
-        insertOJ = (length/2, -3.285)
+        insertOJ = (length/2, -3.285+templateID)
         dxfattribsOJ = {'style': 'ALL', 'color': 7, 'layer': 'ANNOTATION', 'insert':insertOJ, 'char_height':1.26, 'attachment_point':2 }
-        txtOpen = "Pipe Jacking"
+        
         txtOJ = msp.add_mtext(text=txtOpen, dxfattribs=dxfattribsOJ)
         txtOJ.set_location(insertOJ)
 
@@ -171,16 +194,15 @@ def normal_swr(start_il,stop_il,start_gl,stop_gl,slope,dia,length,cumulative_len
             msp.add_line(sup1,sup2)
 
             #DLS
-            insert5 = (cumulative_length-(length/2), -21.13)
+            insert5 = (cumulative_length-(length/2), -21.13+templateID)
             dxfattribs5 = {'style': 'ALL', 'color': 7, 'layer': 'ANNOTATION', 'insert':insert5, 'char_height':1.26, 'attachment_point':2 }
             text5 = "Ø" + str(dia) + "mm\n" + "L=" + str(length) + " m\n" + "1:300" 
             dls =msp.add_mtext(text=text5, dxfattribs=dxfattribs5)
             dls.set_location(insert5)
 
             #Open Cut/Pipe Jacking
-            insertOJ = (cumulative_length-(length/2), -3.285)
+            insertOJ = (cumulative_length-(length/2), -3.285+templateID) #  (abs(2*start_il*1.5))
             dxfattribsOJ = {'style': 'ALL', 'color': 7, 'layer': 'ANNOTATION', 'insert':insertOJ, 'char_height':1.26, 'attachment_point':2 }
-            txtOpen = "Pipe Jacking "
             txtOJ = msp.add_mtext(text=txtOpen, dxfattribs=dxfattribsOJ)
             txtOJ.set_location(insertOJ)
 
@@ -197,17 +219,19 @@ def normal_swr(start_il,stop_il,start_gl,stop_gl,slope,dia,length,cumulative_len
 
 
 
-def table_line(swr_length,y):
-    at1 = (-6.6457+y,-33.6108,0)
-    at2 = (swr_length+5+y,-33.6108,0)
-    at3 = (-6.6457+y,-27.8324,0)
-    at4 = (swr_length+5+y,-27.8324,0)
-    at5 = (-6.6457+y,-19.8780,0)
-    at6 = (swr_length+5+y,-19.8780,0)
-    at7 = (-6.6457+y,-14.4882,0)
-    at8 = (swr_length+5+y,-14.4882,0)
-    at9 = (-6.6457+y,-10.8458,0)
-    at10 = (swr_length+5+y,-10.8458,0)
+def table_line(swr_length,y,templateID=0):
+    '''Draws the annotation table
+        takes swr_length and add values'''
+    at1 = (-6.6457+y,-33.6108+templateID,0)
+    at2 = (swr_length+5+y,-33.6108+templateID,0)
+    at3 = (-6.6457+y,-27.8324+templateID,0)
+    at4 = (swr_length+5+y,-27.8324+templateID,0)
+    at5 = (-6.6457+y,-19.8780+templateID,0)
+    at6 = (swr_length+5+y,-19.8780+templateID,0)
+    at7 = (-6.6457+y,-14.4882+templateID,0)
+    at8 = (swr_length+5+y,-14.4882+templateID,0)
+    at9 = (-6.6457+y,-10.8458+templateID,0)
+    at10 = (swr_length+5+y,-10.8458+templateID,0)
     dxfattribs_at = {'layer': 'SM_PP_GRIDTEXT'}
     msp.add_line(at1,at2, dxfattribs_at)
     msp.add_line(at3,at4, dxfattribs_at)
@@ -215,7 +239,7 @@ def table_line(swr_length,y):
     msp.add_line(at7,at8, dxfattribs_at)
     msp.add_line(at9,at10, dxfattribs_at)
     #ending line
-    at11 = (swr_length+5+y,6,0)
+    at11 = (swr_length+5+y,6+templateID,0)
     msp.add_line(at2,at11,dxfattribs_at)
 
 
@@ -246,17 +270,19 @@ for row in data:
     chainage_fixed = float(row[13])
     mh_il2 = float(row[14])
     if y == 0 :
+        templateID,templateName =templateIDcheck(mh_gl,mh_il)
         manhole(chainage_fixed=chainage_fixed,stop_il=start_il, il=mh_il, mw=1.2, gl=mh_gl, length=0, name=name)
         manhole(chainage_fixed=chainage_fixed+swr_length,stop_il=stop_il, il=mh_il2, mw=1.2, gl=stop_gl, length=swr_length, name=name2)
         normal_swr(start_il, stop_il, start_gl, stop_gl, slope, dia,swr_length, cumulative_length=swr_length)
         table_line(swr_length,y)
     else:
-        manhole(chainage_fixed=chainage_fixed,stop_il=start_il, il=mh_il, mw=1.2, gl=mh_gl, length=0+y, name=name)
-        manhole(chainage_fixed=chainage_fixed+swr_length,stop_il=stop_il, il=mh_il2, mw=1.2, gl=stop_gl, length=swr_length+y, name=name2)
-        normal_swr(start_il, stop_il, start_gl, stop_gl, slope, dia,swr_length, cumulative_length=swr_length+y)
-        table_line(swr_length,y)
-        block = doc.blocks.get('template')
-        blockref = msp.add_blockref('template',insert=(-6.6457+y,-33.6108,0))
+        templateID,templateName =templateIDcheck(mh_gl,mh_il)
+        manhole(chainage_fixed=chainage_fixed,stop_il=start_il, il=mh_il, mw=1.2, gl=mh_gl, length=0+y, name=name,templateID=templateID)
+        manhole(chainage_fixed=chainage_fixed+swr_length,stop_il=stop_il, il=mh_il2, mw=1.2, gl=stop_gl, length=swr_length+y, name=name2,templateID=templateID)
+        normal_swr(start_il, stop_il, start_gl, stop_gl, slope, dia,swr_length, cumulative_length=swr_length+y,templateID=templateID)
+        table_line(swr_length,y,templateID=templateID)
+        block = doc.blocks.get(templateName)
+        blockref = msp.add_blockref(templateName,insert=(-6.6457+y,-33.6108+templateID,0))
         
 
     y = y + 500 
