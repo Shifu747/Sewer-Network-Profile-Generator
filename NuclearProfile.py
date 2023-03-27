@@ -62,6 +62,9 @@ def templateIDcheck(gl,il):
 def manhole_geometry(length,mw,il,gl,templateID=0):
     '''Draws a manhole using given il,gl and mw
         length denotes the center to center distance of manholes
+        il: Invert Level
+        mw: Manhole Width
+        gl: Ground Level
         '''
 
     dxfattribs = {'layer': 'Profile Manhole'}    
