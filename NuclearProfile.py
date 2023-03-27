@@ -9,7 +9,7 @@ msp = doc.modelspace()
 psp =doc.paperspace()
 
 
-csvName = "main/R1200TT.csv"
+csvName = "main/R1500.csv"
 
 
 mw = 1.2
@@ -252,8 +252,6 @@ with open(csvName, newline='') as csvfile:
 
 y =0 
 for row in data:
-     
-    print(row[3])
     name = row[1]
     name2 = row[2]
     name1 = row[0]
@@ -271,10 +269,12 @@ for row in data:
     mh_il2 = float(row[14])
     if y == 0 :
         templateID,templateName =templateIDcheck(mh_gl,mh_il)
-        manhole(chainage_fixed=chainage_fixed,stop_il=start_il, il=mh_il, mw=1.2, gl=mh_gl, length=0, name=name)
-        manhole(chainage_fixed=chainage_fixed+swr_length,stop_il=stop_il, il=mh_il2, mw=1.2, gl=stop_gl, length=swr_length, name=name2)
-        normal_swr(start_il, stop_il, start_gl, stop_gl, slope, dia,swr_length, cumulative_length=swr_length)
-        table_line(swr_length,y)
+        manhole(chainage_fixed=chainage_fixed,stop_il=start_il, il=mh_il, mw=1.2, gl=mh_gl, length=0, name=name,templateID=templateID)
+        manhole(chainage_fixed=chainage_fixed+swr_length,stop_il=stop_il, il=mh_il2, mw=1.2, gl=stop_gl, length=swr_length, name=name2,templateID=templateID)
+        normal_swr(start_il, stop_il, start_gl, stop_gl, slope, dia,swr_length, cumulative_length=swr_length,templateID=templateID)
+        table_line(swr_length,y,templateID=templateID)
+        block = doc.blocks.get(templateName)
+        blockref = msp.add_blockref(templateName,insert=(-6.6457+y,-33.6108+templateID,0))
     else:
         templateID,templateName =templateIDcheck(mh_gl,mh_il)
         manhole(chainage_fixed=chainage_fixed,stop_il=start_il, il=mh_il, mw=1.2, gl=mh_gl, length=0+y, name=name,templateID=templateID)
@@ -286,12 +286,6 @@ for row in data:
         
 
     y = y + 500 
-
-    # normal_swr(start_il[i], stop_il[i], start_gl[i], stop_gl[i], slope[i], dia[i],swr_length[i], cumulative_length= cumulative_swr_length)
-
-
-#extending annotation table line
-
 
 
 
