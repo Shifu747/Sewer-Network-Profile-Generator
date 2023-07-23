@@ -9,7 +9,7 @@ msp = doc.modelspace()
 psp =doc.paperspace()
 
 
-csvName = "main/R1500.csv"
+csvName = "main/w3/TT.csv"
 
 
 mw = 1.2
@@ -151,7 +151,7 @@ def manhole(chainage_fixed,stop_il,il,mw=1.2,gl=0,length=0,name="",templateID=0)
 
 
 def normal_swr(start_il,stop_il,start_gl,stop_gl,slope,dia,length,cumulative_length,templateID=0):
-    txtOpen = "Pipe Jacking"
+    txtOpen = "Open Cut"
     if length == cumulative_length:
         sdn1 = ((length-mw/2),stop_il*2,0)
         sdn2 = ((+mw/2),start_il*2,0)

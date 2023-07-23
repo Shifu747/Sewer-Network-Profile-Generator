@@ -9,7 +9,7 @@ msp = doc.modelspace()
 psp =doc.paperspace()
 
 
-csvName = "main/R1200.csv"
+csvName = "main/w3/TT.csv"
 
 
 mw = 1.2
@@ -137,10 +137,10 @@ def normal_swr(start_il,stop_il,start_gl,stop_gl,slope,dia,length,cumulative_len
         dls =msp.add_mtext(text=text5, dxfattribs=dxfattribs5)
         dls.set_location(insert5)
 
-        #Open Cut/Pipe Jacking
+        #Open Cut/Open Cut
         insertOJ = (length/2, -3.285)
         dxfattribsOJ = {'style': 'ALL', 'color': 7, 'layer': 'ANNOTATION', 'insert':insertOJ, 'char_height':1.26, 'attachment_point':2 }
-        txtOpen = "Pipe Jacking"
+        txtOpen = "Open Cut"
         txtOJ = msp.add_mtext(text=txtOpen, dxfattribs=dxfattribsOJ)
         txtOJ.set_location(insertOJ)
 
@@ -170,10 +170,10 @@ def normal_swr(start_il,stop_il,start_gl,stop_gl,slope,dia,length,cumulative_len
             dls =msp.add_mtext(text=text5, dxfattribs=dxfattribs5)
             dls.set_location(insert5)
 
-            #Open Cut/Pipe Jacking
+            #Open Cut/Open Cut
             insertOJ = (cumulative_length-(length/2), -3.285)
             dxfattribsOJ = {'style': 'ALL', 'color': 7, 'layer': 'ANNOTATION', 'insert':insertOJ, 'char_height':1.26, 'attachment_point':2 }
-            txtOpen = "Pipe Jacking "
+            txtOpen = "Open Cut "
             txtOJ = msp.add_mtext(text=txtOpen, dxfattribs=dxfattribsOJ)
             txtOJ.set_location(insertOJ)
 
@@ -246,4 +246,4 @@ msp.add_line(at2,at11,dxfattribs_at)
 
 
 
-doc.saveas('d231.dxf')
+doc.saveas('d2321.dxf')
