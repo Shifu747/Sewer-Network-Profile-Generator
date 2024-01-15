@@ -12,8 +12,8 @@ psp =doc.paperspace()
 csvName = "main/w3/TT.csv"
 
 
-mw = 1.2
-
+mw = 1.2 #Manhole Diameter 
+txtOpen = "Pipe Jacking"
 
 
 
@@ -132,7 +132,7 @@ def manhole_text(length,gl,il,chainage_fixed,name,stop_il,templateID):
     #CH
     insert3 = (length-0.64, -32.53+templateID)
     dxfattribs4 = {'style': 'ALL', 'color': 7, 'layer': 'PDF_text', 'insert':insert3, 'height':1.26,'rotation':90}
-    msp.add_text(text=str(chainage_fixed), dxfattribs=dxfattribs4)
+    msp.add_text(text=str(round(chainage_fixed,3)), dxfattribs=dxfattribs4)
 
 
 
@@ -151,7 +151,6 @@ def manhole(chainage_fixed,stop_il,il,mw=1.2,gl=0,length=0,name="",templateID=0)
 
 
 def normal_swr(start_il,stop_il,start_gl,stop_gl,slope,dia,length,cumulative_length,templateID=0):
-    txtOpen = "Open Cut"
     if length == cumulative_length:
         sdn1 = ((length-mw/2),stop_il*2,0)
         sdn2 = ((+mw/2),start_il*2,0)

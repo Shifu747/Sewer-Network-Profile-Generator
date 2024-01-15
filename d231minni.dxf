@@ -493,7 +493,7 @@ $SKPOLY
   9
 $TDCREATE
  40
-2460325.661990741
+2460325.7270601853
   9
 $TDUCREATE
  40
@@ -501,7 +501,7 @@ $TDUCREATE
   9
 $TDUPDATE
  40
-2460325.661990741
+2460325.7270601853
   9
 $TDUUPDATE
  40
@@ -937,7 +937,7 @@ $FINGERPRINTGUID
   9
 $VERSIONGUID
   2
-{829540F0-4AC4-4552-B229-BBF979ECBC43}
+{24B3B925-9382-4442-9E31-5419AC46C2EB}
   9
 $EXTNAMES
 290
@@ -1447,9 +1447,9 @@ ISM
   0
 CLASS
   1
-ACDBPLACEHOLDER
+LAYOUT
   2
-AcDbPlaceHolder
+AcDbLayout
   3
 ObjectDBX Classes
  90
@@ -1463,9 +1463,9 @@ ObjectDBX Classes
   0
 CLASS
   1
-LAYOUT
+ACDBPLACEHOLDER
   2
-AcDbLayout
+AcDbPlaceHolder
   3
 ObjectDBX Classes
  90
@@ -5565,7 +5565,7 @@ AcDbMText
  71
 1
   1
-IP-335\PGL:3.77m/IL:2.88m\PDepth:0.89 m
+CO-219\PGL:3.77m/IL:2.88m\PDepth:0.89m
   7
 ALL
   0
@@ -5807,7 +5807,7 @@ AcDbMText
  71
 1
   1
-IP-336\PGL:3.33m/IL:2.63m\PDepth:0.7 m
+IP-335\PGL:3.33m/IL:2.63m\PDepth:0.7m
   7
 ALL
   0
@@ -5973,7 +5973,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=12.6 m\P1:300
+Ø160.0mm\PL=12.6m\P1:300
   7
 ALL
   0
@@ -6001,7 +6001,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -6343,7 +6343,7 @@ AcDbMText
  71
 1
   1
-IP-336\PGL:3.33m/IL:2.63m\PDepth:0.7 m
+CO-220\PGL:3.33m/IL:2.63m\PDepth:0.7m
   7
 ALL
   0
@@ -6585,7 +6585,7 @@ AcDbMText
  71
 1
   1
-IP-337\PGL:3.3m/IL:2.47m\PDepth:0.83 m
+IP-336\PGL:3.3m/IL:2.47m\PDepth:0.83m
   7
 ALL
   0
@@ -6751,7 +6751,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=8.2 m\P1:300
+Ø160.0mm\PL=8.2m\P1:300
   7
 ALL
   0
@@ -6779,7 +6779,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -7121,7 +7121,7 @@ AcDbMText
  71
 1
   1
-IP-337\PGL:3.3m/IL:2.47m\PDepth:0.83 m
+CO-221\PGL:3.3m/IL:2.47m\PDepth:0.83m
   7
 ALL
   0
@@ -7363,7 +7363,7 @@ AcDbMText
  71
 1
   1
-IP-338\PGL:3.3m/IL:2.22m\PDepth:1.08 m
+IP-337\PGL:3.3m/IL:2.22m\PDepth:1.08m
   7
 ALL
   0
@@ -7529,7 +7529,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=12.5 m\P1:300
+Ø160.0mm\PL=12.5m\P1:300
   7
 ALL
   0
@@ -7557,7 +7557,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -7899,7 +7899,7 @@ AcDbMText
  71
 1
   1
-IP-338\PGL:3.3m/IL:2.22m\PDepth:1.08 m
+CO-222\PGL:3.3m/IL:2.22m\PDepth:1.08m
   7
 ALL
   0
@@ -8141,7 +8141,7 @@ AcDbMText
  71
 1
   1
-IP-339\PGL:3.83m/IL:1.88m\PDepth:1.95 m
+IP-338\PGL:3.83m/IL:1.88m\PDepth:1.95m
   7
 ALL
   0
@@ -8307,7 +8307,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=16.8 m\P1:300
+Ø160.0mm\PL=16.8m\P1:300
   7
 ALL
   0
@@ -8335,7 +8335,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -8677,7 +8677,7 @@ AcDbMText
  71
 1
   1
-IP-339\PGL:3.83m/IL:1.88m\PDepth:1.95 m
+CO-223\PGL:3.83m/IL:1.88m\PDepth:1.95m
   7
 ALL
   0
@@ -8919,7 +8919,7 @@ AcDbMText
  71
 1
   1
-IP-340\PGL:3.4m/IL:1.79m\PDepth:1.61 m
+IP-339\PGL:3.4m/IL:1.79m\PDepth:1.61m
   7
 ALL
   0
@@ -9085,7 +9085,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=4.3 m\P1:300
+Ø160.0mm\PL=4.3m\P1:300
   7
 ALL
   0
@@ -9113,7 +9113,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -9455,7 +9455,7 @@ AcDbMText
  71
 1
   1
-IP-340\PGL:3.4m/IL:1.79m\PDepth:1.61 m
+CO-224\PGL:3.4m/IL:1.79m\PDepth:1.61m
   7
 ALL
   0
@@ -9697,7 +9697,7 @@ AcDbMText
  71
 1
   1
-IP-324\PGL:3.47m/IL:1.24m\PDepth:2.23 m
+IP-340\PGL:3.47m/IL:1.24m\PDepth:2.23m
   7
 ALL
   0
@@ -9863,7 +9863,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=27.9 m\P1:300
+Ø160.0mm\PL=27.9m\P1:300
   7
 ALL
   0
@@ -9891,7 +9891,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -10233,7 +10233,7 @@ AcDbMText
  71
 1
   1
-IP-324\PGL:3.47m/IL:1.24m\PDepth:2.23 m
+CO-208\PGL:3.47m/IL:1.24m\PDepth:2.23m
   7
 ALL
   0
@@ -10475,7 +10475,7 @@ AcDbMText
  71
 1
   1
-IP-325\PGL:3.44m/IL:0.84m\PDepth:2.6 m
+IP-324\PGL:3.44m/IL:0.84m\PDepth:2.6m
   7
 ALL
   0
@@ -10641,7 +10641,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=19.5 m\P1:300
+Ø160.0mm\PL=19.5m\P1:300
   7
 ALL
   0
@@ -10669,7 +10669,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -11011,7 +11011,7 @@ AcDbMText
  71
 1
   1
-IP-325\PGL:3.44m/IL:0.84m\PDepth:2.6 m
+CO-209\PGL:3.44m/IL:0.84m\PDepth:2.6m
   7
 ALL
   0
@@ -11253,7 +11253,7 @@ AcDbMText
  71
 1
   1
-IP-326\PGL:3.45m/IL:0.58m\PDepth:2.87 m
+IP-325\PGL:3.45m/IL:0.58m\PDepth:2.87m
   7
 ALL
   0
@@ -11419,7 +11419,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=13.5 m\P1:300
+Ø160.0mm\PL=13.5m\P1:300
   7
 ALL
   0
@@ -11447,7 +11447,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -11789,7 +11789,7 @@ AcDbMText
  71
 1
   1
-IP-326\PGL:3.45m/IL:0.58m\PDepth:2.87 m
+CO-210\PGL:3.45m/IL:0.58m\PDepth:2.87m
   7
 ALL
   0
@@ -12031,7 +12031,7 @@ AcDbMText
  71
 1
   1
-IP-327\PGL:3.5m/IL:0.52m\PDepth:2.98 m
+IP-326\PGL:3.5m/IL:0.52m\PDepth:2.98m
   7
 ALL
   0
@@ -12197,7 +12197,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=2.9 m\P1:300
+Ø160.0mm\PL=2.9m\P1:300
   7
 ALL
   0
@@ -12225,7 +12225,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -12567,7 +12567,7 @@ AcDbMText
  71
 1
   1
-IP-327\PGL:3.5m/IL:0.52m\PDepth:2.98 m
+CO-211\PGL:3.5m/IL:0.52m\PDepth:2.98m
   7
 ALL
   0
@@ -12809,7 +12809,7 @@ AcDbMText
  71
 1
   1
-IP-328\PGL:3.47m/IL:0.18m\PDepth:3.29 m
+IP-327\PGL:3.47m/IL:0.18m\PDepth:3.29m
   7
 ALL
   0
@@ -12975,7 +12975,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=16.9 m\P1:300
+Ø160.0mm\PL=16.9m\P1:300
   7
 ALL
   0
@@ -13003,7 +13003,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -13345,7 +13345,7 @@ AcDbMText
  71
 1
   1
-IP-328\PGL:3.47m/IL:0.12m\PDepth:3.35 m
+CO-212\PGL:3.47m/IL:0.12m\PDepth:3.35m
   7
 ALL
   0
@@ -13587,7 +13587,7 @@ AcDbMText
  71
 1
   1
-IP-329\PGL:3.44m/IL:-0.05m\PDepth:3.49 m
+IP-328\PGL:3.44m/IL:-0.05m\PDepth:3.49m
   7
 ALL
   0
@@ -13753,7 +13753,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=17.3 m\P1:300
+Ø160.0mm\PL=17.3m\P1:300
   7
 ALL
   0
@@ -13781,7 +13781,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -14123,7 +14123,7 @@ AcDbMText
  71
 1
   1
-IP-329\PGL:3.44m/IL:-0.05m\PDepth:3.49 m
+CO-213\PGL:3.44m/IL:-0.05m\PDepth:3.49m
   7
 ALL
   0
@@ -14365,7 +14365,7 @@ AcDbMText
  71
 1
   1
-IP-330\PGL:3.47m/IL:-0.18m\PDepth:3.65 m
+IP-329\PGL:3.47m/IL:-0.18m\PDepth:3.65m
   7
 ALL
   0
@@ -14531,7 +14531,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=12.4 m\P1:300
+Ø160.0mm\PL=12.4m\P1:300
   7
 ALL
   0
@@ -14559,7 +14559,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -14901,7 +14901,7 @@ AcDbMText
  71
 1
   1
-IP-330\PGL:3.47m/IL:-0.18m\PDepth:3.65 m
+CO-214\PGL:3.47m/IL:-0.18m\PDepth:3.65m
   7
 ALL
   0
@@ -15143,7 +15143,7 @@ AcDbMText
  71
 1
   1
-IP-331\PGL:3.4m/IL:-0.21m\PDepth:3.61 m
+IP-330\PGL:3.4m/IL:-0.21m\PDepth:3.61m
   7
 ALL
   0
@@ -15309,7 +15309,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=3.6 m\P1:300
+Ø160.0mm\PL=3.6m\P1:300
   7
 ALL
   0
@@ -15337,7 +15337,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -15679,7 +15679,7 @@ AcDbMText
  71
 1
   1
-IP-331\PGL:3.4m/IL:-0.21m\PDepth:3.61 m
+CO-215\PGL:3.4m/IL:-0.21m\PDepth:3.61m
   7
 ALL
   0
@@ -15921,7 +15921,7 @@ AcDbMText
  71
 1
   1
-IP-332\PGL:3.4m/IL:-0.4m\PDepth:3.8 m
+IP-331\PGL:3.4m/IL:-0.4m\PDepth:3.8m
   7
 ALL
   0
@@ -16087,7 +16087,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=18.3 m\P1:300
+Ø160.0mm\PL=18.3m\P1:300
   7
 ALL
   0
@@ -16115,7 +16115,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -16457,7 +16457,7 @@ AcDbMText
  71
 1
   1
-IP-332\PGL:3.4m/IL:-0.4m\PDepth:3.8 m
+CO-216\PGL:3.4m/IL:-0.4m\PDepth:3.8m
   7
 ALL
   0
@@ -16699,7 +16699,7 @@ AcDbMText
  71
 1
   1
-IP-333\PGL:3.48m/IL:-0.55m\PDepth:4.03 m
+IP-332\PGL:3.48m/IL:-0.55m\PDepth:4.03m
   7
 ALL
   0
@@ -16865,7 +16865,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=15.6 m\P1:300
+Ø160.0mm\PL=15.6m\P1:300
   7
 ALL
   0
@@ -16893,7 +16893,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -17235,7 +17235,7 @@ AcDbMText
  71
 1
   1
-IP-333\PGL:3.48m/IL:-0.55m\PDepth:4.03 m
+CO-217\PGL:3.48m/IL:-0.55m\PDepth:4.03m
   7
 ALL
   0
@@ -17477,7 +17477,7 @@ AcDbMText
  71
 1
   1
-IP-334\PGL:3.47m/IL:-0.73m\PDepth:4.2 m
+IP-333\PGL:3.47m/IL:-0.73m\PDepth:4.2m
   7
 ALL
   0
@@ -17643,7 +17643,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=17.6 m\P1:300
+Ø160.0mm\PL=17.6m\P1:300
   7
 ALL
   0
@@ -17671,7 +17671,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -18013,7 +18013,7 @@ AcDbMText
  71
 1
   1
-IP-334\PGL:3.47m/IL:-0.73m\PDepth:4.2 m
+CO-218\PGL:3.47m/IL:-0.73m\PDepth:4.2m
   7
 ALL
   0
@@ -18255,7 +18255,7 @@ AcDbMText
  71
 1
   1
-O-6\PGL:3.23m/IL:-0.95m\PDepth:4.18 m
+IP-334\PGL:3.23m/IL:-0.95m\PDepth:4.18m
   7
 ALL
   0
@@ -18421,7 +18421,7 @@ AcDbMText
  71
 2
   1
-Ø160.0mm\PL=22.0 m\P1:300
+Ø160.0mm\PL=22.0m\P1:300
   7
 ALL
   0
@@ -18449,7 +18449,7 @@ AcDbMText
  71
 2
   1
-Pipe Jacking
+Open Cut
   7
 ALL
   0
@@ -29629,7 +29629,7 @@ DictionaryVariables
 280
 0
   1
-1.0.2 @ 2024-01-15T09:53:16.440535+00:00
+1.0.2 @ 2024-01-15T11:26:58.871559+00:00
   0
 ENDSEC
   0
