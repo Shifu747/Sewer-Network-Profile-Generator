@@ -9,7 +9,7 @@ msp = doc.modelspace()
 psp =doc.paperspace()
 
 
-csvName = "main/w3/TT.csv"
+csvName = "main/w3/W1_TT.csv"
 
 
 mw = 1.2
@@ -193,34 +193,27 @@ with open(csvName, newline='') as csvfile:
     next(datareader)  # skip the first row
     data = list(datareader)
 
-name = [row[1] for row in data]
-name1 = [row[0] for row in data]
-start_gl = parse_numeric_list(data,3)
-stop_gl = parse_numeric_list(data,4)
-swr_length = parse_numeric_list(data,5)
-dia =  parse_numeric_list(data,6)
-slope = parse_numeric_list(data,7)
-start_il = parse_numeric_list(data,8)
-stop_il = parse_numeric_list(data,9)
-mh_gl = parse_numeric_list(data,10)
-mh_il = parse_numeric_list(data,11)
-chainage = parse_numeric_list(data,12)
-chainage_fixed = parse_numeric_list(data,13)
+for row in data:
+    name = row[1]
+    name2 = row[2]
+    name1 = row[0]
+    start_gl = float(row[3])
+    stop_gl = float(row[4])
+    swr_length = float(row[5])
+    dia =  float(row[6])
+    slope = int(row[7])
+    start_il = float(row[8])
+    stop_il = float(row[9])
+    mh_gl = float(row[10])
+    mh_il = float(row[11])
+    chainage = float(row[12])
+    chainage_fixed = float(row[13])
+    mh_il2 = float(row[14])
 
 
-cumulative_swr_length = 0
-cumulative_mh_length = 0
-for i in range(len(name1)):
-    cumulative_swr_length += swr_length[i]
-    cumulative_mh_length += chainage[i]
-    if i > 0:
-        stop_il_next = stop_il[i-1]
-    else:
-     stop_il_next = mh_il[i]
+    manhole(chainage_fixed=chainage_fixed,stop_il=start_il, il=mh_il, mw=1.2, gl=mh_gl, length=0, name=name)
+    normal_swr(start_il, stop_il, start_gl, stop_gl, slope, dia,swr_length, cumulative_length=swr_length)
 
-    manhole(chainage_fixed=chainage_fixed[i],stop_il=stop_il_next, il=mh_il[i], mw=1.2, gl=mh_gl[i], length=cumulative_mh_length, name=name[i])
-
-    normal_swr(start_il[i], stop_il[i], start_gl[i], stop_gl[i], slope[i], dia[i],swr_length[i], cumulative_length= cumulative_swr_length)
 
 
 #extending annotation table line
@@ -243,7 +236,8 @@ msp.add_line(at9,at10, dxfattribs_at)
 #ending line
 at11 = (cumulative_mh_length+5,6,0)
 msp.add_line(at2,at11,dxfattribs_at)
+block = doc.blocks.get('template10505')
+blockref = msp.add_blockref('template10505',insert=(-6.6457,-33.6108,0))
 
 
-
-doc.saveas('d2321.dxf')
+doc.saveas('Chain.dxf')

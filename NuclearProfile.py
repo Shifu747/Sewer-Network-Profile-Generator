@@ -9,7 +9,7 @@ msp = doc.modelspace()
 psp =doc.paperspace()
 
 
-csvName = "main/w3/TT.csv"
+csvName = "main/w3/W1_TT.csv"
 
 
 mw = 1.2 #Manhole Diameter 
@@ -99,7 +99,7 @@ def manhole_text(length,gl,il,chainage_fixed,name,stop_il,templateID):
     #MH detail Text
     depth =gl-il
     depth = (round(depth,2))
-    text = name + "\nGL:" +str(gl) + "m/" + "IL:" + str(il) +"m" + "\nDepth:" + str(depth) + " m"
+    text = name + "\nGL:" +str(str("{:.2f}".format(gl))) + "m/" + "IL:" + str(str("{:.2f}".format(il))) +"m" + "\nDepth:" + str(str("{:.2f}".format(depth))) + " m"
     insert = (length, gl+18.50)
     height = 1.26
     dxfattribs = {'style': 'ALL', 'color': 7, 'layer': 'ANNOTATION', 'char_height':height}
@@ -110,21 +110,21 @@ def manhole_text(length,gl,il,chainage_fixed,name,stop_il,templateID):
     #GL
     insert2 = (length-0.64, -14.13+templateID)
     dxfattribs2 = {'style': 'ALL', 'color': 7, 'layer': 'PDF_text', 'insert':insert2, 'height':1.26,'rotation':90}
-    an_gl = msp.add_text(text=str(gl), dxfattribs=dxfattribs2)
+    an_gl = msp.add_text(text=str("{:.2f}".format(gl)), dxfattribs=dxfattribs2)
 
     #IL
     if stop_il ==  il:
         insert3 = (length-0.64, -19.01+templateID)
         dxfattribs3 = {'style': 'ALL', 'color': 7, 'layer': 'PDF_text', 'insert':insert3, 'height':1.26,'rotation':90}
-        msp.add_text(text=str(il), dxfattribs=dxfattribs3)
+        msp.add_text(text=str("{:.2f}".format(il)), dxfattribs=dxfattribs3)
     else:
         insert3 = (length+1.60, -19.01+templateID)
         dxfattribs3 = {'style': 'ALL', 'color': 7, 'layer': 'PDF_text', 'insert':insert3, 'height':1.26,'rotation':90}
-        msp.add_text(text=str(il), dxfattribs=dxfattribs3)
+        msp.add_text(text=str("{:.2f}".format(il)), dxfattribs=dxfattribs3)
 
         insert3 = (length-0.64, -19.01+templateID)
         dxfattribs3 = {'style': 'ALL', 'color': 7, 'layer': 'PDF_text', 'insert':insert3, 'height':1.26,'rotation':90}
-        msp.add_text(text=str(stop_il), dxfattribs=dxfattribs3)
+        msp.add_text(text=str("{:.2f}".format(stop_il)), dxfattribs=dxfattribs3)
 
 
     #DLS
@@ -132,7 +132,7 @@ def manhole_text(length,gl,il,chainage_fixed,name,stop_il,templateID):
     #CH
     insert3 = (length-0.64, -32.53+templateID)
     dxfattribs4 = {'style': 'ALL', 'color': 7, 'layer': 'PDF_text', 'insert':insert3, 'height':1.26,'rotation':90}
-    msp.add_text(text=str(round(chainage_fixed,3)), dxfattribs=dxfattribs4)
+    msp.add_text(text=str("{:.2f}".format(chainage_fixed)), dxfattribs=dxfattribs4)
 
 
 
@@ -165,7 +165,7 @@ def normal_swr(start_il,stop_il,start_gl,stop_gl,slope,dia,length,cumulative_len
         #DLS
         insert5 = (length/2, -21.13+templateID)
         dxfattribs5 = {'style': 'ALL', 'color': 7, 'layer': 'ANNOTATION', 'insert':insert5, 'char_height':1.26, 'attachment_point':2 }
-        text5 = "Ø" + str(dia) + "mm\n" + "L=" + str(length) + " m\n" + "1:300" 
+        text5 = "Ø" + str(dia) + "mm\n" + "L=" + str(length) + " m\n" + "1:" + str(round(slope,0)) 
         dls =msp.add_mtext(text=text5, dxfattribs=dxfattribs5)
         dls.set_location(insert5)
 
@@ -198,7 +198,7 @@ def normal_swr(start_il,stop_il,start_gl,stop_gl,slope,dia,length,cumulative_len
             #DLS
             insert5 = (cumulative_length-(length/2), -21.13+templateID)
             dxfattribs5 = {'style': 'ALL', 'color': 7, 'layer': 'ANNOTATION', 'insert':insert5, 'char_height':1.26, 'attachment_point':2 }
-            text5 = "Ø" + str(dia) + "mm\n" + "L=" + str(length) + " m\n" + "1:300" 
+            text5 = "Ø" + str(dia) + "mm\n" + "L=" + str(length) + " m\n" + "1:" + str(round(slope,0)) 
             dls =msp.add_mtext(text=text5, dxfattribs=dxfattribs5)
             dls.set_location(insert5)
 
@@ -261,7 +261,7 @@ for row in data:
     stop_gl = float(row[4])
     swr_length = float(row[5])
     dia =  float(row[6])
-    slope = float(row[7])
+    slope = int(row[7])
     start_il = float(row[8])
     stop_il = float(row[9])
     mh_gl = float(row[10])
@@ -287,8 +287,8 @@ for row in data:
         blockref = msp.add_blockref(templateName,insert=(-6.6457+y,-33.6108+templateID,0))
         
 
-    y = y + 500 
+    y = y + chainage
 
 
 
-doc.saveas('d231.dxf')
+doc.saveas('W1.dxf')

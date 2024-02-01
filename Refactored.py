@@ -2,7 +2,7 @@ import ezdxf
 import csv
 
 mw = 1.2 #Manhole Diameter 
-txtOpen = "Pipe Jacking"
+txt_open = "Pipe Jacking"
 
 
 
@@ -50,7 +50,6 @@ def manhole(chainage_fixed, stop_il, il, mw=1.2, gl=0, length=0, name="", templa
     manhole_text(msp, length, gl, il, chainage_fixed, name, stop_il, template_id)
 
 def normal_swr(msp, start_il, stop_il, start_gl, stop_gl, slope, dia, length, cumulative_length, template_id):
-    txt_open = "Open Cut"
     if length == cumulative_length:
         sdn1, sdn2 = ((length - mw/2), stop_il * 2, 0), (+mw/2, start_il * 2, 0)
         sup1, sup2 = ((length - mw/2), ((stop_il * 2) + ((dia * 2) / 1000)), 0), (+mw/2, ((start_il * 2) + ((dia * 2) / 1000)), 0)
@@ -101,7 +100,7 @@ def table_line(msp, swr_length, y, template_id):
     msp.add_line(at2, at11, dxf_attribs_at)
 
 # reading data
-csv_name = "main/w3/TT.csv"
+csv_name = "main/w3/W1_TT.csv"
 with open(csv_name, newline='') as csvfile:
     data = list(csv.reader(csvfile, delimiter=','))[1:]
 
@@ -125,4 +124,4 @@ for row in data:
 
     y += 500
 
-doc.saveas('d231minni.dxf')
+doc.saveas('W1_Profile.dxf')
